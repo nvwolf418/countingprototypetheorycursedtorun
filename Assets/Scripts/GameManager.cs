@@ -90,22 +90,22 @@ public class GameManager : MonoBehaviour
     {
         staminaBar.value = playerCom.GetStaminaRate();
 
-        if (playerCom.exhausted)
+        if (playerCom.pl.Exhausted)
         {
-            Debug.Log($"exhuasted: {playerCom.stamina} exhuasted: {playerCom.exhausted}");
+            Debug.Log($"exhuasted: {playerCom.stamina} exhuasted: {playerCom.pl.Exhausted}");
             staminaBar.fillRect.GetComponent<Image>().color = Color.blue;
             return;
         }
 
 
-        if (playerCom.stamina < playerCom.exhaustCutoff)
+        if (playerCom.stamina < playerCom.pl.Exhaustion)
         {
-            Debug.Log($"playerstam: {playerCom.stamina} cutoff: {playerCom.exhaustCutoff}");
+            Debug.Log($"playerstam: {playerCom.stamina} cutoff: {playerCom.pl.Exhaustion}");
             staminaBar.fillRect.GetComponent<Image>().color = Color.red;
         }
-        else if (playerCom.stamina < playerCom.exhaustRecovCutoff)
+        else if (playerCom.stamina < playerCom.pl.ExhaustRecovery)
         {
-            Debug.Log($"playerstam: {playerCom.stamina} cutoffrecoveerrr: {playerCom.exhaustRecovCutoff}");
+            Debug.Log($"playerstam: {playerCom.stamina} cutoffrecoveerrr: {playerCom.pl.ExhaustRecovery}");
             staminaBar.fillRect.GetComponent<Image>().color = Color.yellow;
         }
         else
